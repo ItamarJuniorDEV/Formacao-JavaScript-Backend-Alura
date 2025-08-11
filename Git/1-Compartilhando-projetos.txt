@@ -1,0 +1,104 @@
+1. Conectando Git com o Repositório:
+Código local é quando o código está na minha máquina
+eu tendo commitado algo ou não, e código remoto é quando
+o código está em algum servidor online como: Github
+OBS: Só vira remoto depois que fizer o push
+
+1º Instale o git e adicione em variáveis de ambiente (se for windows)
+2º Cria um repositório(local) vazio no PC: git init 
+3º Pegue os arquivos do repositório local e mande pro remoto: git add .
+4º Adicionar configuração global:
+  - git config --global user.email "you@example.com"
+  - git config --global user.name "Your Name"
+5º Agora vamos commitar algo: git commit -m "Iniciar Projeto"
+6º Renomeia o nome da branch para main: git branch -M main
+7º Vinculando repositório local com o remoto (origin é um apelido): git remote add origin url-do-repositório
+8º Enviando o commit do repositório local para o remoto: git push -u origin main
+
+1.1 Configurando para usar SSH:
+1º Siga até o passo 7º acima
+2º Ao clonar, altere a opção HTTP pra SSH
+3º No github, và em Settings
+4º No menu a esquerda, tem a opção SSH and GPG keys, clique ai
+5º Clique em Add new SSH Key
+6º Adicione um título, em Key type marque Authentication Key
+7º Em Key, precisamos colocar uma chave que ao dar o push ele cria
+8º Caso não tenha criado, no terminal digite: ssh-keygen -t ed25519 -C "seu-email@example.com" e dê enter 3 vezes
+9º Vai gerar a chave privada e pública, no caminho de ssh, abra a chave pública e copie a chave gerada
+10º Agora vamos fazer o envio pro repositório remoto: git push -u origin main
+---------------------------------------------------------------------------------------------------------------------
+2. Para uso do dia a dia:
+2.1 Para listar repositórios remotos associados: git remote -v
+  2.1.1 Deverá retornar algo como: origin   https://github.com/seu-usuario/seu-projeto.git (fetch)
+  2.1.2 origin   https://github.com/seu-usuario/seu-projeto.git (push)
+2.2  Para remover um repositório remoto (remover o que tem "origin"): git remote remove origin
+2.3 Alterar a URL de um repositório remoto:
+  2.3.1 git remote set-url origin https://github.com/seu-usuario/seu-repositorio.git
+2.4 Renomear um repositório remoto: 
+  2.4.1 git remote rename apelido novo_apelido
+2.5 Para ver a situação atual do repositório local
+  2.5.1 git status
+2.6 Para clonar um repositório, o comando é:
+  2.6.1 git clone link-do-repositório
+2.7 Para listar o histórico de commits:
+  2.7.1 git log
+---------------------------------------------------------------------------------------------------------------------
+3. Sinalizações de Arquivos:
+  3.1 M: A letra "M" representa que o arquivo foi modificado
+  3.2 U: A letra "U" representa que o arquivo não existia ou ainda não teve commit feito no git
+---------------------------------------------------------------------------------------------------------------------
+4. Mensagens e padrões de commits:
+  4.1 Mantenha a mensagem curta (máx. 72 caracteres). Para mais, pule uma linha e detalhe.
+  4.2 Na mensagem, descreva as alterações com verbos infinitivos (adicionar, corrigir, atualizar)
+    4.2.1 Ex: Atualizar texto do título da página.
+  4.3 Evite detalhes técnicos, esses detalhes podem ser adicionados nos comentários de código.     
+  4.4 Realize commits sempre que finalizar uma tarefa específica ou resolver algum bug, mantendo um histórico claro              
+---------------------------------------------------------------------------------------------------------------------
+5. Adicionando novo colaborador pro projeto (Público apenas para leitura)
+1º Entre no repositório
+2º Clique em Settings
+3º Vá em Collaborators no menu à esquerda
+4º Clique no botão verde "Add people"
+5º Passa o usuário da pessoa que queremos dar acesso para colaborar
+6º A pessoa que vai receber acesso deverá abrir um link do email para aceitar o convite
+  5.1 Para atualizar o código local com o remoto, use:
+    5.1.1 git pull origin main - Sincronizou com a main                       
+---------------------------------------------------------------------------------------------------------------------
+6. Resolvendo conflitos (duas pessoas alteram a mesma coisa):
+1º Baixe os commits do colaborador (use git pull ou 3 pontos e Pull)
+2º O git deverá indicar o conflito com o lugar do problema
+3º Para resolvermos o conflito, devemos apagar o arquivo que não será utilizado e também:   
+  - Devemos apagar toda a linha que tem:
+    - ============================
+    - <<<<<<< HEAD           
+    - >>>>>>>>>> ea4488793827abs09829374283b
+4º Criar um novo commit avisando o GitHub que o conflito foi resolvido e enviar
+---------------------------------------------------------------------------------------------------------------------
+7. Revertendo alterações(SOMENTE SE ESTIVER EM REPOSITÓRIO LOCAL):
+  7.1 Para desfazer um commit:
+    7.1.1: git log: Para pegarmos o ID do commit
+    7.1.2: git revert ID-do-commit: Para excluir o commit via ID e já cria um novo commit com o reverse
+    7.1.3: git push origin main: Enviamos o commit com a mudança.
+  7.2 Para resetar/apagar um commit:
+    7.2.1: git log: Para pegarmos o ID do commit (Devemos pegar o ID do commit que queremos retornar)
+    7.2.2: git reset --hard ID-do-commit: Para apagar o commit, porém devemos pegar o ID do commit que queremos voltar
+  7.3 Para alterar o último commit:
+    7.3.1: git commit --amend -m "Mensagem correta"
+---------------------------------------------------------------------------------------------------------------------
+8. Ignorando arquivos ao subir:
+  8.1 Para ignorarmos arquivos, devemos criar na raiz o arquivo:
+    8.1.1 .gitignore, e nele colocamos o nome dos arquivos que não queremos enviar
+---------------------------------------------------------------------------------------------------------------------
+9. Utilizando o Gist
+O Gist é uma ferramenta dentro do github para compartilhar um trecho do nosso projeto (não inteiro).
+Como utilizar:
+1º Entre no repositório
+2º Clique no ícone de seta pra baixo ao lado de "+"
+3º Clique em New gist
+4º Vai abrir um formulário:
+  - Coloque um título descritivo e curto
+  - No campo, adicione o que você quer compartilhar
+  - Clique em Create secret gist (escolha público ou privado)
+  - Pra finalizar, copie o link e compartilhe com quem você quiser
+
+
