@@ -1,0 +1,37 @@
+SUMÁRIO:
+1. O que é o NodeJS?
+2. Para que é usado?
+3. NodeJS vs JavaScript
+4. O NPM/YARN
+5. O package3.json
+6. Instalação e uso
+====================================================
+1. O que é o NodeJS?
+É o JavaScript do lado do servidor com um motor v8 que nos permite
+usar o JavaScript fora do navegador.
+
+2. Para que é usado?
+O NodeJS é usado para:
+- APIs REST
+- chatbots
+- IoT
+- Streaming
+- Servidores Web
+- Extração de dados da Web (web scraping)
+
+3. NodeJS vs JavaScript
+São a mesma linguagem, porém o JavaScript são executadas no navegador,
+já o NodeJS é do lado do servidor.
+
+4. O NPM/YARN
+Usamos o NPM ou YARN que são gerenciadores de pacotes, voltados
+para pacotes do NodeJS, na qual instalamos a pasta node_modules 
+com o comando: npm install nome-da-biblioteca
+
+5. O package.json
+- Possui todas as configurações do projeto 
+- Use o comando npm init para iniciar
+
+6. Instalação e uso
+- Acesse nodejs.org e selecione a versão LTS
+- No terminal digite: node -v para conferir se deu certo
